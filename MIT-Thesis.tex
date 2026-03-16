@@ -1,0 +1,174 @@
+% !TEX encoding = UTF-8 Unicode
+% !BIB TS-program = biber
+
+\DocumentMetadata 
+{
+	lang        = en-US,
+	pdfversion  = 1.7,
+	pdfstandard = a-2b,
+}
+
+\documentclass[twoside]{mitthesis}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% ADDITIONAL PACKAGES FOR REAL THESIS WRITING %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Math
+\usepackage{amsmath}
+\usepackage{mathtools}
+
+%% Graphics
+\usepackage{graphicx}
+
+%% Chemistry (for \ce{})
+\usepackage[version=4]{mhchem}
+
+%% Units
+\usepackage{siunitx}
+
+%% Code listings
+\usepackage{listings}
+
+%% Tables
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{dcolumn}
+\newcolumntype{d}[1]{D{.}{.}{#1}}
+
+%% Long tables
+\usepackage{longtable}
+
+%% Typography
+\usepackage[nopatch=footnote]{microtype}
+
+%% Multiple columns
+\usepackage{multicol}
+
+%% Dummy text
+\usepackage{lipsum}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%% GRAPHICS PATH %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\graphicspath{{figures/}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%% BIBLIOGRAPHY SETUP %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[
+style=ext-numeric-comp,
+giveninits=true,
+maxbibnames=10,
+sorting=none,
+language=american
+]{biblatex}
+
+\renewcommand{\multicitedelim}{\addcomma}
+
+\addbibresource{references.bib}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% METADATA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\hypersetup{
+	pdfsubject={MIT Thesis},
+	pdfkeywords={MIT, thesis},
+	pdfurl={},
+	pdfcontactemail={},
+	pdfauthortitle={}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% MATH OPERATORS %%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\Erf}{erf}
+\DeclareMathOperator{\Erfc}{erfc}
+
+\DeclarePairedDelimiterXPP\erf[1]{\Erf\mkern1mu}(){}{#1}
+\DeclarePairedDelimiterXPP\erfc[1]{\Erfc\mkern1mu}(){}{#1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%% DOCUMENT %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\title{The Atomic Theory as Applied To Gases}
+
+\Author{Silas W. Holman}{Department of Physics}
+
+\Degree{Bachelor of Science in Physics}{Department of Physics}
+
+\Supervisor{Edward C. Pickering}{Professor of Physics}[Department of Physics]
+
+\Acceptor{Tertius Castor}{Professor of Log Dams}{Graduate Officer, Department of Research}
+
+\DegreeDate{June}{1876}
+
+\ThesisDate{May 18, 1876}
+
+\Reader{Marcus Gavius Apicius}{Professor of Cooking Arts}{Department of Food Science}
+\Reader{Marie-Antoine Carême}{Professor of Haute Cuisine}{Department of Food Science}
+\Reader{Miles Gloriosus}{Professor of Personal Pronouns}{Department of Rhetoric}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%% ABSTRACT %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{abstract}
+\input{abstract.tex}
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%% FRONTMATTER %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\include{acknowledgments}
+\include{biography}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%% CONTENTS %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%% CHAPTERS %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\include{chapter1}
+% \include{chapter2}
+% \include{chapter3}
+% \include{chapter4}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%% APPENDIX %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+
+\include{appendixa}
+\include{appendixb}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\defbibheading{bibintoc}{\chapter*{#1}\addcontentsline{toc}{backmatter}{\refname}}
+
+\printbibliography[title={\refname},heading=bibintoc]
+
+\end{document}
